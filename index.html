@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brixo-mart - India’s Trusted Online Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #004080, #0074d9);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: white;
+    }
+
+
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      color: #004080;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      border-left: 5px solid #0074d9;
+      padding-left: 10px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+      background: #e6f0ff;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h2 {
+      color: #0030h366;
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background-color: #e7f3ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .feature-box {
+      flex: 1 1 30%;
+      background: #f0f8ff;
+      padding: 1rem;
+      border-left: 5px solid #0074d9;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    article {
+      background: #f0f8ff;
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      border-left: 6px solid #0074d9;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 116, 217, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form input,
+    form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: #0074d9;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #005bb5;
+    }
+
+    footer {
+      background: #f1f1f1;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer p {
+      margin: 0.4rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .features {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brixo-mart</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#blogs">Blogs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <div class="hero">
+      <h2>Welcome to Brixo-mart</h2>
+      <p>India's most affordable and reliable e-commerce platform. Your one-stop shop for everything — from gadgets to groceries!</p>
+      <div class="highlight">
+        🎉 Launching August 2025 — Fast delivery, 100% secure, and full support!
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>🔒 Secure Payments</h3>
+        <p>Shop with confidence. We use encrypted payment systems to protect your information.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🚚 Fast Delivery</h3>
+        <p>Get your orders within 2–4 days across India. Super-fast and reliable!</p>
+      </div>
+      <div class="feature-box">
+        <h3>📞 24/7 Support</h3>
+        <p>We’re always here to help you through chat, phone, or email. Anytime, anywhere.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Brixo-mart</h2>
+    <p><strong>Brixo-mart</strong> is a Made-in-India e-commerce platform built for affordability, speed, and trust. From electronics to daily needs — we deliver everything at your doorstep.</p>
+    <ul>
+      <li><strong>Founded:</strong> 2025</li>
+      <li><strong>Head Office:</strong> Mumbai, India</li>
+      <li><strong>Our Mission:</strong> Empower every Indian with easy, affordable online shopping.</li>
+    </ul>
+  </section>
+
+  <section id="blogs">
+    <h2>Latest Blog Posts</h2>
+
+    <article>
+      <h3>🛍️ Why Everyone is Talking About Brixo-mart</h3>
+      <p>India’s next big online shopping platform is coming! Here's how Brixo-mart is ready to shake up the market.</p>
+    </article>
+
+    <article>
+      <h3>🔥 Sneak Peek: Product Categories on Launch</h3>
+      <p>Electronics, fashion, kitchen items, grooming, baby care — explore what’s coming in our first product lineup!</p>
+    </article>
+
+    <article>
+      <h3>🚀 The Journey Behind Brixo-mart</h3>
+      <p>Meet the dreamers behind the idea and learn how Brixo-mart became one of the most anticipated startups of 2025.</p>
+    </article>
+
+    <article>
+      <h3>📦 How Brixo-mart Will Deliver Fast Across India</h3>
+      <p>We’re building logistics partnerships for fast, reliable, pan-India delivery within 2–4 days. Learn how it works.</p>
+    </article>
+
+    <article>
+      <h3>👕 Style Meets Savings: Brixo-mart Fashion Preview</h3>
+      <p>Affordable fashion for all — explore what’s trending in our upcoming clothing and accessories collection.</p>
+    </article>
+
+    <article>
+      <h3>🔐 Secure Shopping at Brixo-mart</h3>
+      <p>Your data, your trust — we use top-grade encryption and payment security to protect you while you shop.</p>
+    </article>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Need help or want to give feedback? Call us or drop a message — we’d love to hear from you!</p>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <input type="tel" placeholder="Your Phone Number" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="highlight" style="margin-top: 1.5rem;">
+      📞 <strong>Customer Support:</strong> +91-8407031843 
+    </div>
+  </section>
+
+  <footer>
+    <p>📍 Brixo-mart HQ – Bihar, India</p>
+    <p>📞 +91-9876543210 | ✉️ support@brixomart.in</p>
+    <p>© 2025 Brixo-mart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for contacting Brixo-mart! We'll respond shortly.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
