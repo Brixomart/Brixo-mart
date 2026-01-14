@@ -1,44 +1,1093 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple CSS Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta tags for character set and viewport -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- Page title -->
+  <title>Brixo Mart</title>
 
-  <!-- CSS file link -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style.css">
+  <!-- SEO meta tags -->
+  <meta name="description" content="Brixo Mart - High-quality products for you. A safe and easy online shopping experience.">
+  <meta name="keywords" content="Brixo Mart, online shopping, e-commerce, products, shopping">
+  <meta name="author" content="Brixo Mart">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Brixo Mart">
+  <meta property="og:description" content="Brixo Mart - High-quality products for you.">
+  <meta property="og:image" content="/photos/WhatsApp%20Image%202025-10-02%20at%2000.08.55_6254fd1b.jpg">
+  <meta property="og:url" content="https://www.brixomart.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Brixo Mart">
+  <meta property="og:see_also" content="https://www.instagram.com/brixo__mart?igsh=MWNobXVzeGt6YXd5dA==">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brixo Mart">
+  <meta name="twitter:description" content="Brixo Mart - High-quality products for you.">
+  <meta name="twitter:image" content="/photos/WhatsApp%20Image%202025-10-02%20at%2000.08.55_6254fd1b.jpg">
+  <meta name="twitter:site" content="@brixo__mart">
+  <meta name="twitter:creator" content="@brixo__mart">
+
+  <!-- Instagram -->
+  <link rel="me" href="https://www.instagram.com/brixo__mart?igsh=MWNobXVzeGt6YXd5dA==">
+
+  <!-- WhatsApp share link -->
+  <meta name="whatsapp:site" content="https://www.brixomart.com">
+  <!-- Note: WhatsApp uses URL sharing mostly, so this is informational -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/photos/WhatsApp%20Image%202025-10-02%20at%2000.08.55_6254fd1b.jpg">
+  
+  <!-- External stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Main container wrapping all content -->
+  <div class="main-container">
+    <!-- Header section (hidden on product detail page) -->
+    <div id="header-section">
+      <!-- Top navigation bar -->
+      <header class="topbar" role="banner" aria-label="Top navigation">
+        <div class="left">
+          <!-- Hamburger menu button -->
+          <button class="hamburger" id="menuToggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <!-- Logo -->
+          <div class="logo" aria-hidden="true">brixo mart</div>
+        </div>
 
-  <nav class="navbar">
-    <h1 class="logo">MyWebsite</h1>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+        <!-- Header actions (wishlist and cart) -->
+        <nav class="actions" role="navigation" aria-label="Header actions">
+          <!-- Wishlist Icon -->
+          <button class="icon-btn" aria-label="Wishlist" onclick="showWishlist()">
+            <svg viewBox="0 0 24 24" fill="#ff5a5f" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 4.248c-3.148-5.402-12-3.056-12 2.944 0 4.418 6.582 9.76 12 14.808 5.418-5.048 12-10.39 12-14.808 0-6-8.852-8.346-12-2.944z"/>
+            </svg>
+          </button>
 
-  <section class="hero">
-    <h2>Welcome to My Website</h2>
-    <p>Ye ek simple website hai jisme CSS zyada use hua hai</p>
-    <button>Get Started</button>
-  </section>
+          <!-- Profile Icon -->
+          <button class="icon-btn" aria-label="Profile" onclick="isLoggedIn ? showProfile() : showLogin()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/>
+              <path d="M12 6a4 4 0 100 8 4 4 0 000-8zM4 20c0-4 4-6 8-6s8 2 8 6"/>
+            </svg>
+          </button>
+        </nav>
+      </header>
 
-  <section class="cards">
-    <div class="card">Fast</div>
-    <div class="card">Secure</div>
-    <div class="card">Modern</div>
-  </section>
+      <!-- Address Bar -->
+      <div class="address-bar" id="addressBar">
+          <span id="addressIcon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" viewBox="0 0 24 24">
+                  <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
+              </svg>
+          </span>
+          <span class="address-text" id="currentAddress">Select your delivery location...</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#000" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6"/>
+          </svg>
+      </div>
 
-  <footer>
-    <p>© 2026 MyWebsite | All Rights Reserved</p>
-  </footer>
+      <!-- Home Page Search Bar -->
+      <div class="home-search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#6B7280" viewBox="0 0 30 30">
+              <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8"/>
+          </svg>
+          <input type="text" placeholder="Search for products...">
+      </div>
 
+<!-- Grocery Offers Slider -->
+<div class="swiper">
+  <div class="swiper-wrapper">
+
+    <!-- Slide 1 -->
+    <div class="swiper-slide">
+      <div class="slide-container">
+        <div class="slide-right">
+          <img src="photos/WhatsApp%20Image%202025-09-28%20at%2018.40.46_0cf97b6f.jpg" alt="Fresh Vegetables" style="width:150px; height:auto;">
+        </div>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="swiper-slide">
+      <div class="slide-container">
+        <div class="slide-right">
+          <img src="/photos/WhatsApp%20Image%202025-09-28%20at%2019.34.30_094b90f7.jpg" alt="Fruits" style="width:150px; height:auto;">
+        </div>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="swiper-slide">
+      <div class="slide-container">
+        <div class="slide-right">
+          <img src="/photos/WhatsApp%20Image%202025-09-26%20at%2020.23.56_d9e758d8.jpg" alt="Dairy Products" style="width:150px; height:auto;"> 
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="swiper-slide">
+      <div class="slide-container">
+        <div class="slide-right">
+          <img src="/photos/WhatsApp%20Image%202025-09-26%20at%2022.47.36_498e4dc5.jpg" alt="Snacks & Beverages" style="width:150px; height:auto;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pagination for slider -->
+  <div class="swiper-pagination"></div>
+</div>
+
+
+
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Side Menu -->
+    <div class="menu" id="menu">
+      <div class="menu-header">Brixo Mart</div>
+      <div class="menu-item" onclick="showCategories()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span>Home</span>
+      </div>
+      <div class="menu-item" onclick="showOrders()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        <span>Orders</span>
+      </div>
+      <div class="menu-item" onclick="showCategoriesGrid()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Categories</span>
+      </div>
+    </div>
+
+    <!-- Location Popup -->
+    <div class="popup-overlay" id="locationPopup">
+        <div class="popup-box">
+            <div class="close-popup" id="closePopup"></div>
+            <div class="popup-header">Select your Location</div>
+            <div class="location-message" id="locationMessage">
+              <span class="location-logo" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" >
+                  <path class="location-icon-fg" d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6z"/>
+                  <rect class="location-icon-fg" x="11.2" y="0.6" width="1.6" height="3.2" rx="0.8"/>
+                  <rect class="location-icon-fg" x="11.2" y="20.2" width="1.6" height="3.2" rx="0.8"/>
+                  <rect class="location-icon-fg" x="0.6" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                  <rect class="location-icon-fg" x="20.2" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                  <circle class="location-icon-hole" cx="12" cy="12" r="4.2"/>
+                </svg>
+              </span>
+              Detecting your location...
+            </div>
+            <div class="map-error" id="mapError">Unable to load map. Please check your address manually.</div>
+            <div class="popup-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#6B7280" viewBox="0 0 30 30">
+                    <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8"/>
+                </svg>
+                <input type="text" id="popupSearchInput" placeholder="Search by area, street, pin code">
+            </div>
+            <div class="suggestions" id="suggestions"></div>
+            <div class="use-location" id="useCurrentLocation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green" viewBox="0 0 24 24">
+                    <path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0-6a1 1 0 011 1v1.07A8.001 8.001 0 0120.93 11H22a1 1 0 110 2h-1.07A8.001 8.001 0 0113 20.93V22a1 1 0 11-2 0v-1.07A8.001 8.001 0 013.07 13H2a1 1 0 110-2h1.07A8.001 8.001 0 0111 3.07V2a1 1 0 011-1z"/>
+                </svg>
+                Use current location
+            </div>
+            <div id="map"></div>
+            <div class="loading" id="locationLoading"></div>
+            <button class="confirm-btn" id="confirmAddressBtn">Confirm Location</button>
+        </div>
+    </div>
+
+    <!-- NEW: Login Popup -->
+    <div class="popup-overlay" id="loginPopup" style="display: none;">
+        <div class="popup-box">
+            <div class="close-popup" id="closeLoginPopup"></div>
+            <div class="popup-header">Login with Phone Number</div>
+            <input type="tel" id="phoneInput" class="input-field" placeholder="Enter your phone number (10 digits)" maxlength="10">
+            <button class="confirm-btn" id="sendOtpBtn" disabled>Send OTP</button>
+            <div id="otpSection" style="display: none; margin-top: 15px;">
+                <input type="text" id="otpInput" class="input-field" placeholder="Enter 4-digit OTP" maxlength="4">
+                <button class="confirm-btn" id="verifyOtpBtn" disabled>Verify OTP</button>
+            </div>
+            <div class="loading" id="loginLoading" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-header">
+        <button class="back-btn" id="closeSearch"><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="search-bar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+            <path d="M13 3C7.489 3 3 7.489 3 13s4.489 10 10 10a9.95 9.95 0 0 0 6.322-2.264l5.971 5.971a1 1 0 1 0 1.414-1.414l-5.97-5.97A9.95 9.95 0 0 0 23 13c0-5.511-4.489-10-10-10m0 2c4.43 0 8 3.57 8 8s-3.57 8-8 8-8-3.57-8-8 3.57-8 8-8"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search for products...">
+        </div>
+      </div>
+      <div id="search-results" class="product-grid"></div> <!-- Added for search results -->
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+      <!-- Categories Page -->
+      <div id="categories-page" class="container">
+        <!-- Daily uses product Section -->
+        <div class="category-section">
+          <h3 class="section-title">Daily uses product</h3>
+          <div class="category-grid">
+            <div class="category-card" onclick="showProducts('Shampoo')">
+              <div class="category-image-container">
+                <img src="/photos/IMG-20250929-WA0011.jpg" class="category-image" alt="Bread">
+              </div>
+              <p class="category-name">Sweet Tooth</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Soap')">
+              <div class="category-image-container">
+                <img src="photos/IMG-20250929-WA0010.jpg" class="category-image" alt="Electronic">
+              </div>
+              <p class="category-name">Tea,Coffe&milk...</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Toothpaste')">
+              <div class="category-image-container">
+                <img src="/photos/IMG-20250929-WA0009.jpg" class="category-image" alt="Baby">
+              </div>
+              <p class="category-name">baby</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Toothbrush')">
+              <div class="category-image-container">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.01.45_3f766593.jpg" class="category-image" alt="Toothbrush">
+              </div>
+              <p class="category-name">Toothbrush</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Face Wash')">
+              <div class="category-image-container">
+                <img src="/photos/IMG-20250929-WA0012.jpg" class="category-image" alt="Beauty">
+              </div>
+              <p class="category-name">beauty</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Deodorant')">
+              <div class="category-image-container">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.11.07_2c3ac348.jpg" class="category-image" alt="Wheat Atta">
+              </div>
+              <p class="category-name">wheat,atta</p>
+            </div>
+            <div class="category-card" onclick="showProducts('r')">
+              <div class="category-image-container">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.06.46_3664e139.jpg" class="category-image" alt="Fashion">
+              </div>
+              <p class="category-name">Fashion</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Shaving Cream')">
+              <div class="category-image-container">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.15.49_2eace5e0.jpg" class="category-image" alt="Oil">
+              </div>
+              <p class="category-name">Oil</p>
+            </div>
+            <div class="category-card" onclick="showProducts('Sanitary Pads')">
+              <div class="category-image-container">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.19.57_221584f9.jpg" class="category-image" alt="Kitchen Item">
+              </div>
+              <p class="category-name">kitchen item</p>
+            </div>
+          </div>
+        </div>
+        <!-- Fresh Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Fresh</h2>
+          <div class="product-grid" id="fresh-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+        <!-- Categories (Groceries) Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Categories</h2>
+          <div class="product-grid" id="categories-product-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+                <!-- beauty Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Beauty</h2>
+          <div class="product-grid" id="beauty-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+        <!-- Kids Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Kids</h2>
+          <div class="product-grid" id="kids-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+        <!-- Toys Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Toys</h2>
+          <div class="product-grid" id="toys-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+        <!-- Electronic Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Electronic</h2>
+          <div class="product-grid" id="electronic-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+
+                <!-- Kids Section with 4 products -->
+        <div class="category-section">
+          <h2 class="section-title">Top Deals</h2>
+          <div class="product-grid" id="top-deals-grid">
+            <!-- Products will be dynamically populated here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Grid Page (hidden by default) -->
+      <div id="categories-grid-page" class="hidden">
+        <!-- Categories Header -->
+        <div class="categories-header">
+          <button class="back-btn" onclick="showCategories()"><i class="fa-solid fa-arrow-left"></i></button>
+          <div>Categories</div>
+          <i class="fa-solid fa-magnifying-glass search-icon" id="openSearch"></i>
+        </div>
+
+        <!-- Fruits & Vegetables Section -->
+        <div class="categories-section-title">Fruits & Vegetables</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Fresh Fruits')"><img src="images/fresh-fruits.jpg"><p>Fresh Fruits</p></div>
+          <div class="categories-card" onclick="showProducts('Fresh Vegetables')"><img src="images/fresh-vegetables.jpg"><p>Fresh Vegetables</p></div>
+          <div class="categories-card" onclick="showProducts('Organic Produce')"><img src="images/organic-produce.jpg"><p>Organic Produce</p></div>
+          <div class="categories-card" onclick="showProducts('Exotic Fruits')"><img src="images/exotic-fruits.jpg"><p>Exotic Fruits</p></div>
+        </div>
+
+
+        <!-- Grocery Staples Section -->
+        <div class="categories-section-title">Grocery Staples</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Rice')"><img src="images/rice.jpg"><p>Rice</p></div>
+          <div class="categories-card" onclick="showProducts('Atta & Flour')"><img src="images/atta-flour.jpg"><p>Atta & Flour</p></div>
+          <div class="categories-card" onclick="showProducts('Pulses')"><img src="images/pulses.jpg"><p>Pulses</p></div>
+          <div class="categories-card" onclick="showProducts('Pulses')"><img src="images/pulses.jpg"><p>Pulses</p></div>
+          <div class="categories-card" onclick="showProducts('Oil & Ghee')"><img src="images/oil-ghee.jpg"><p>Oil & Ghee</p></div>
+          <div class="categories-card" onclick="showProducts('Sugar & Salt')"><img src="images/sugar-salt.jpg"><p>Sugar & Salt</p></div>
+          <div class="categories-card" onclick="showProducts('Dry Fruits')"><img src="images/dry-fruits.jpg"><p>Dry Fruits</p></div>
+        </div>
+
+        <!-- Household Essentials Section -->
+        <div class="categories-section-title">Household Essentials</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Cleaning Supplies')"><img src="images/cleaning-supplies.jpg"><p>Cleaning Supplies</p></div>
+          <div class="categories-card" onclick="showProducts('Detergents')"><img src="images/detergents.jpg"><p>Detergents</p></div>
+          <div class="categories-card" onclick="showProducts('Kitchen Tools')"><img src="images/kitchen-tools.jpg"><p>Kitchen Tools</p></div>
+          <div class="categories-card" onclick="showProducts('Paper Products')"><img src="images/paper-products.jpg"><p>Paper Products</p></div>
+        </div>
+
+
+
+        <!-- Beauty & Personal Care Section -->
+        <div class="categories-section-title">Beauty & Personal Care</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Bath & Body')"><img src="images/bath-body.jpg"><p>Bath & Body</p></div>
+          <div class="categories-card" onclick="showProducts('Hair Care')"><img src="images/hair-care.jpg"><p>Hair Care</p></div>
+          <div class="categories-card" onclick="showProducts('Skincare')"><img src="images/skincare.jpg"><p>Skincare</p></div>
+          <div class="categories-card" onclick="showProducts('Makeup')"><img src="images/makeup.jpg"><p>Makeup</p></div>
+          <div class="categories-card" onclick="showProducts('Fragrances')"><img src="images/fragrances.jpg"><p>Fragrances</p></div>
+          <div class="categories-card" onclick="showProducts('Oral Care')"><img src="images/oral-care.jpg"><p>Oral Care</p></div>
+          <div class="categories-card" onclick="showProducts('Men's Grooming')"><img src="images/mens-grooming.jpg"><p>Men's Grooming</p></div>
+          <div class="categories-card" onclick="showProducts('Baby Care')"><img src="images/baby-care.jpg"><p>Baby Care</p></div>
+        </div>
+
+        <!-- Electronics Section -->
+        <div class="categories-section-title">Electronics</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Mobiles')"><img src="images/mobiles.jpg"><p>Mobiles</p></div>
+          <div class="categories-card" onclick="showProducts('Headphones')"><img src="images/headphones.jpg"><p>Headphones</p></div>
+          <div class="categories-card" onclick="showProducts('Speakers')"><img src="images/speakers.jpg"><p>Speakers</p></div>
+          <div class="categories-card" onclick="showProducts('Smart Watches')"><img src="images/smart-watches.jpg"><p>Smart Watches</p></div>
+          <div class="categories-card" onclick="showProducts('Laptops')"><img src="images/laptops.jpg"><p>Laptops</p></div>
+          <div class="categories-card" onclick="showProducts('Chargers')"><img src="images/chargers.jpg"><p>Chargers</p></div>
+          <div class="categories-card" onclick="showProducts('Power Banks')"><img src="images/power-banks.jpg"><p>Power Banks</p></div>
+          <div class="categories-card" onclick="showProducts('Home Appliances')"><img src="images/home-appliances.jpg"><p>Home Appliances</p></div>
+        </div>
+
+        <!-- Baby & Toys Section -->
+        <div class="categories-section-title">Baby & Toys</div>
+        <div class="categories-grid">
+          <div class="categories-card" onclick="showProducts('Baby Food')"><img src="images/baby-food.jpg"><p>Baby Food</p></div>
+          <div class="categories-card" onclick="showProducts('Baby Diapers')"><img src="images/baby-diapers.jpg"><p>Baby Diapers</p></div>
+          <div class="categories-card" onclick="showProducts('Baby Skincare')"><img src="images/baby-skincare.jpg"><p>Baby Skincare</p></div>
+          <div class="categories-card" onclick="showProducts('Baby Wipes')"><img src="images/baby-wipes.jpg"><p>Baby Wipes</p></div>
+          <div class="categories-card" onclick="showProducts('Soft Toys')"><img src="images/soft-toys.jpg"><p>Soft Toys</p></div>
+          <div class="categories-card" onclick="showProducts('Educational Toys')"><img src="images/educational-toys.jpg"><p>Educational Toys</p></div>
+          <div class="categories-card" onclick="showProducts('Games')"><img src="images/games.jpg"><p>Games</p></div>
+          <div class="categories-card" onclick="showProducts('Ride-ons')"><img src="images/ride-ons.jpg"><p>Ride-ons</p></div>
+        </div>
+      </div>
+
+      <!-- Products Page (hidden by default) -->
+      <div id="products-page" class="container full-screen-products hidden">
+        <button class="back-button" onclick="showCategories()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to Categories</span>
+        </button>
+
+        <h2 id="product-category-title" class="section-title">Products</h2>
+
+        <div class="product-grid" id="products-grid">
+          <!-- Products will be dynamically inserted here -->
+        </div>
+      </div>
+
+      <!-- Product Detail Page (hidden by default) -->
+      <div id="product-detail-page" class="hidden">
+        <div class="product-detail-container">
+          <button class="back-button" onclick="showProducts(currentCategory)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Products</span>
+          </button>
+
+          <div class="product-detail">
+            <div class="product-detail-image-container">
+              <img id="detail-product-image" class="product-detail-image" src="" alt="">
+            </div>
+            <div class="product-detail-info">
+              <h2 id="detail-product-title" class="product-detail-title"></h2>
+              <div id="detail-product-price" class="product-detail-price"></div>
+              <div id="detail-product-discount" class="discount-text"></div>
+              <p id="detail-product-description" class="product-detail-description"></p>
+
+              <div class="product-detail-actions">
+                <div class="product-detail-qty">
+                  <button onclick="decreaseDetailQty()">-</button>
+                  <span id="detail-qty">1</span>
+                  <button onclick="increaseDetailQty()">+</button>
+                </div>
+                <button class="add-to-cart-btn" onclick="addDetailToCart()">
+  Add to Cart
+</button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Products (other products from same category from same category) -->
+          <div class="related-products">
+            <h2>Related Products</h2>
+            <div class="related-products-grid" id="related-products-grid">
+              <!-- Related products will be dynamically inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wishlist Page (hidden by default) -->
+      <div id="wishlist-page" class="hidden">
+        <div class="wishlist-container">
+          <button class="back-button" onclick="showCategories()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Home</span>
+          </button>
+
+          <div class="wishlist-header">
+            <h2>My Wishlist</h2>
+            <div class="wishlist-count" id="wishlist-count">0</div>
+          </div>
+
+          <div class="product-grid" id="wishlist-grid">
+            <!-- Wishlist items will be dynamically inserted here -->
+            <div class="empty-state">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="#ccc">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <p>Your wishlist is empty</p>
+              <button onclick="showCategories()" class="continue-shopping-btn">Continue Shopping</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Page (hidden by default) -->
+      <div id="cart-page" class="hidden">
+        <div class="cart-container">
+          <button class="back-button" onclick="showCategories()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Home</span>
+          </button>
+
+          <div class="cart-header">
+            <h2>My Cart</h2>
+            <div class="cart-count" id="cart-count">0</div>
+          </div>
+
+          <div id="free-delivery-message" class="free-delivery-message" style="display: none;"></div>
+
+          <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically inserted here -->
+            <div class="empty-state">
+              <p>Your cart is empty</p>
+              <button onclick="showCategories()" class="continue-shopping-btn">Continue Shopping</button>
+            </div>
+          </div>
+
+          <div class="bill-details" style="display: none;">
+            <!-- Bill details will be dynamically inserted here -->
+          </div>
+          <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+      </div>
+
+      <!-- Payment Page (hidden by default) -->
+      <div id="payment-page" class="hidden">
+        <button class="back-button" onclick="showCart()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to Cart</span>
+        </button>
+
+        <div class="payment-options">
+          <div class="option">
+            <img src="https://cdn-icons-png.flaticon.com/512/2331/2331941.png" class="logo">
+            <div><div class="option-title">Cash on Delivery</div><div class="option-desc">Pay with cash</div></div>
+          </div>
+          <div class="option">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" class="logo">
+            <div><div class="option-title">UPI</div><div class="option-desc">Pay instantly using UPI apps</div></div>
+          </div>
+          <div class="option">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Mastercard-logo.png" class="logo" style="width:50px;">
+            <div><div class="option-title">Credit / Debit Card</div><div class="option-desc">Pay with card</div></div>
+          </div>
+        </div>
+
+        <!-- Address Summary (initially hidden) -->
+        <div class="address-summary" id="paymentAddressSummary">
+          <h3>Delivery Address</h3>
+          <div class="address-details" id="paymentAddressDetails"></div>
+          <button class="edit-address" id="paymentEditAddress">Edit Address</button>
+        </div>
+
+        <div class="footer">
+          <div class="price">₹</div>
+          <button class="place-order-btn" id="paymentPlaceOrderBtn" disabled>Place Order</button>
+        </div>
+
+        <!-- Address Popup -->
+        <div class="popup-overlay" id="paymentLocationPopup">
+          <div class="popup-box">
+            <div class="close-popup" id="paymentClosePopup"></div>
+            <div class="popup-header">Enter Delivery Address</div>
+            <div class="location-message" id="paymentLocationMessage">
+              <span class="location-logo" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                  <path class="location-icon-fg" d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6z"/>
+                  <rect class="location-icon-fg" x="11.2" y="0.6" width="1.6" height="3.2" rx="0.8"/>
+                  <rect class="location-icon-fg" x="11.2" y="20.2" width="1.6" height="3.2" rx="0.8"/>
+                  <rect class="location-icon-fg" x="0.6" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                  <rect class="location-icon-fg" x="20.2" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                  <circle class="location-icon-hole" cx="12" cy="12" r="4.2"/>
+                </svg>
+              </span>
+              Detecting your location...
+            </div>
+            <div class="map-error" id="paymentMapError">Unable to load map. Please check your address manually.</div>
+            <input type="text" id="paymentName" class="input-field" placeholder="Full Name">
+            <input type="text" id="paymentMobile" class="input-field" placeholder="Mobile Number">
+            <input type="text" id="paymentHouse" class="input-field" placeholder="House / Flat No">
+            <input type="text" id="paymentStreet" class="input-field" placeholder="Street / Locality">
+            <div class="pincode-container">
+              <input type="text" id="paymentPincode" class="input-field" placeholder="Pincode" maxlength="6">
+              <div class="suggestions" id="paymentSuggestions"></div>
+            </div>
+            <div class="use-location" id="paymentUseLocation">
+                <span class="location-logo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                      <path class="location-icon-fg" d="M12 3.2a8.8 8.8 0 1 0 0 17.6 8.8 8.8 0 0 0 0-17.6z"/>
+                      <rect class="location-icon-fg" x="11.2" y="0.6" width="1.6" height="3.2" rx="0.8"/>
+                      <rect class="location-icon-fg" x="11.2" y="20.2" width="1.6" height="3.2" rx="0.8"/>
+                      <rect class="location-icon-fg" x="0.6" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                      <rect class="location-icon-fg" x="20.2" y="11.2" width="3.2" height="1.6" rx="0.8"/>
+                      <circle class="location-icon-hole" cx="12" cy="12" r="4.2"/>
+                    </svg>
+                  </span>
+                Use my current location
+            </div>
+            <div id="paymentMap"></div>
+            <div class="loading" id="paymentLocationLoading"></div>
+            <button class="confirm-btn" id="paymentConfirmAddress" disabled>Confirm Address</button>
+          </div>
+        </div>
+
+        <!-- Toast -->
+        <div class="toast" id="paymentToast">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#28a745" viewBox="0 0 24 24">
+            <path d="M20.285 6.709l-11.285 11.291-5.285-5.291 1.414-1.414 3.871 3.877 9.871-9.877z"/>
+          </svg>
+          <span id="paymentToastMessage">Address Saved</span>
+        </div>
+
+        <!-- Success -->
+        <div class="success-page" id="paymentSuccessPage">
+          <svg width="150" height="150" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Keyframes for the circle animation */
+    @keyframes circle-draw {
+      0% {
+        stroke-dashoffset: 283;
+        stroke-dasharray: 283;
+        stroke-width: 0;
+        opacity: 0;
+        transform: rotate(-180deg);
+      }
+      30% {
+        opacity: 1;
+        transform: rotate(-90deg);
+      }
+      50% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 283;
+        stroke-width: 4;
+        transform: rotate(0deg);
+      }
+      70% {
+        stroke-width: 8;
+        stroke: #8BC34A;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 283;
+        stroke-width: 4;
+        stroke: #4CAF50;
+        fill: #4CAF50;
+        transform: rotate(0deg);
+      }
+    }
+
+    /* Keyframes for the checkmark animation */
+    @keyframes checkmark-draw {
+      0% {
+        stroke-dashoffset: 130;
+        stroke-dasharray: 130;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 130;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Sparkle effect */
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1) rotate(180deg); }
+    }
+
+    /* Pulse effect */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    .checkmark-circle {
+      fill: none;
+      stroke: #4CAF50;
+      stroke-width: 4;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      transform-origin: 50px 50px;
+      animation: circle-draw 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .checkmark-path {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 130;
+      stroke-dashoffset: 130;
+      transform-origin: 50px 50px;
+      animation: checkmark-draw 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s forwards;
+    }
+
+    /* Sparkle elements */
+    .sparkle {
+      fill: #FFEB3B;
+      opacity: 0;
+    }
+
+    .sparkle-1 {
+      animation: sparkle 0.8s ease-in-out 1.8s forwards;
+    }
+
+    .sparkle-2 {
+      animation: sparkle 0.8s ease-in-out 2s forwards;
+    }
+
+    .sparkle-3 {
+      animation: sparkle 0.8s ease-in-out 2.2s forwards;
+    }
+
+    /* Pulse element */
+    .pulse {
+      fill: none;
+      stroke: #4CAF50;
+      stroke-width: 2;
+      opacity: 0;
+      transform-origin: 50px 50px;
+      animation: pulse 2s ease-out 1.5s infinite;
+    }
+  </style>
+
+  <!-- Pulse effect -->
+  <circle class="pulse" cx="50" cy="50" r="45" />
+
+  <!-- Main circle -->
+  <circle class="checkmark-circle" cx="50" cy="50" r="45" />
+
+  <!-- Checkmark -->
+  <path class="checkmark-path" d="M30 50 L45 65 L70 40" />
+
+  <!-- Sparkle effects -->
+  <circle class="sparkle sparkle-1" cx="30" cy="30" r="3" />
+  <circle class="sparkle sparkle-2" cx="70" cy="30" r="3" />
+  <circle class="sparkle sparkle-3" cx="50" cy="75" r="3" />
+</svg>
+          <div class="success-text" id="paymentSuccessText"></div>
+          <audio id="paymentSuccessSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+        </div>
+
+      </div>
+
+      <!-- Orders Page (hidden by default) -->
+      <div id="orders-page" class="hidden">
+        <div class="orders-container">
+          <button class="back-button" onclick="showCategories()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Home</span>
+          </button>
+
+          <div class="orders-header">
+            <h2>My Orders</h2>
+            <div class="orders-count" id="orders-count">0</div>
+          </div>
+
+          <div class="orders-list" id="orders-list">
+            <!-- Orders will be dynamically inserted here -->
+            <div class="empty-state">
+              <p>You have no orders yet</p>
+              <button onclick="showCategories()" class="continue-shopping-btn">Continue Shopping</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<div id="order-detail-page" class="hidden">
+  <div class="order-detail-container">
+    <button class="back-button" onclick="showOrders()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Back to Orders</span>
+    </button>
+
+    <div class="order-header">
+      <div class="order-time">
+        Placed today, <span id="order-placed-time"></span><br>
+        Delivery <span id="order-delivery-time"></span>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-step active">
+        <div class="circle">✓</div>
+        <div class="label">Placed</div>
+      </div>
+      <div class="line"></div>
+      <div class="progress-step">
+        <div class="circle"></div>
+        <div class="label">Packed</div>
+      </div>
+      <div class="line"></div>
+      <div class="progress-step">
+        <div class="circle"></div>
+        <div class="label">On The Way</div>
+      </div>
+      <div class="line"></div>
+      <div class="progress-step">
+        <div class="circle"></div>
+        <div class="label">Delivered</div>
+      </div>
+    </div>
+
+    <div class="pay-on-delivery">
+      <span class="icon">₹</span>
+      Pay on delivery ₹<span id="order-total-amount"></span> to the Delivery Executive
+    </div>
+
+    <div class="order-items">
+      <div class="items-header">
+        <span id="order-item-count"></span> Item • Order ID: <span id="order-id"></span>
+        <button class="reorder-btn" onclick="reorder(this.dataset.orderId)">Reorder</button>
+      </div>
+      <div id="order-items-list"></div>
+    </div>
+
+    <div class="payment-summary">
+      <h3>Payment Summary</h3>
+      <div class="summary-row">
+          <span>Items</span>
+          <span id="order-items-total"></span>
+      </div>
+      <div class="summary-row discount">
+          <span>Discount</span>
+          <span id="order-discount"></span>
+      </div>
+      <div class="summary-row">
+          <span>Platform fee</span>
+          <span id="order-platform"></span>
+      </div>
+      <div class="summary-row">
+          <span>Delivery fee</span>
+          <span id="order-delivery"></span>
+      </div>
+      <div class="summary-row">
+          <span>Handling fee</span>
+          <span id="order-handling"></span>
+      </div>
+      <div class="summary-row grand-total">
+          <span>Total Amount</span>
+          <span id="order-grand-total"></span>
+      </div>
+    </div>
+
+    <button class="customer-support" onclick="contactSupport()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      Customer Support
+    </button>
+  </div>
+</div>
+
+      <!-- Profile Page (hidden by default) -->
+      <div id="profile-page" class="hidden">
+        <div class="profile-container">
+          <button class="back-button" onclick="showCategories()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 18l-6-6 6-6" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Back to Home</span>
+          </button>
+
+          <div class="profile-header">
+            <h2>Profile</h2>
+          </div>
+          <div class="profile-options">
+            <!-- Address Book -->
+            <div class="profile-option" id="openAddressBook" onclick="showAddressBook()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="green" fill="none" viewBox="0 0 24 24">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              <span>Address Book</span>
+            </div>
+
+            <!-- Account Privacy -->
+            <div class="profile-option" id="openPrivacy" onclick="showPrivacyPolicy()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="green" fill="none" viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>Account Privacy</span>
+            </div>
+
+            <!-- Login -->
+            <div class="profile-option" id="loginBtn" onclick="showLogin()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="green" fill="none" viewBox="0 0 24 24">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                <polyline points="10 17 15 12 10 7"/>
+                <line x1="15" y1="12" x2="3" y2="12"/>
+              </svg>
+              <span>Login</span>
+            </div>
+
+            <!-- Logout -->
+            <div class="profile-option logout" id="logoutBtn" onclick="logout()" style="display: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="red" fill="none" viewBox="0 0 24 24">
+                <path d="M4 4v16h4M4 4h4M4 20h4M8 12h12M12 8l4 4-4 4"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span style="color: red;">Logout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- ==================  BRIXO MART FOOTER and about us ================== -->
+<footer id="app-footer" style="background: #2e7d32; background: linear-gradient(to bottom, #43a047, #2e7d32); color: #fff; padding: 50px 20px; border-top-left-radius: 30px; border-top-right-radius: 30px; font-family: 'Arial', sans-serif;">
+
+  <!-- Brand Section -->
+  <div style="text-align: center;">
+    <h2 style="color: #caffca; margin-bottom: 15px; font-size: 28px; font-weight: bold;">Brixo Mart</h2>
+    <p style="color: #f0fff0; font-size: 15px; line-height: 1.8; max-width: 650px; margin: auto;">
+      Your trusted grocery grocery partner delivering fresh fruits, vegetables, and daily essentials with quality and convenience right to your doorstep.
+    </p>
+  </div>
+
+  <!-- App Badge Section -->
+  <div style="text-align: center; margin-top: 25px;">
+    <a href="#">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" style="width: 160px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </a>
+  </div>
+
+  <!-- Contact and Support Section -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 50px; flex-wrap: wrap; padding: 0 10px;">
+
+    <!-- Contact Us LEFT -->
+    <div style="text-align: left;">
+      <h3 style="margin-bottom: 12px; font-size: 18px; font-weight: 600;">Contact Us</h3>
+      <p style="margin: 6px 0; font-size: 14px;">📍 Main Bazaar, Delhi, India</p>
+      <p style="margin: 6px 0; font-size: 14px;">✉️ support@brixomart.com</p>
+      <p style="margin: 6px 0; font-size: 14px;">📞 +91 8407031843</p>
+    </div>
+
+    <!-- Support RIGHT -->
+    <div style="text-align: right;">
+      <h3 style="margin-bottom: 12px; font-size: 18px; font-weight: 600;">Support</h3>
+      <p style="margin: 6px 0; font-size: 14px;">
+        <a href="#" onclick="openModal('privacy')" style="color: #d0ffd6; text-decoration: none;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#d0ffd6'">Privacy Policy</a>
+      </p>
+      <p style="margin: 6px 0; font-size: 14px;">
+        <a href="#" onclick="openModal('terms')" style="color: #d0ffd6; text-decoration: none;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#d0ffd6'">Terms & Conditions</a>
+      </p>
+      <p style="margin: 6px 0; font-size: 14px;">
+        <a href="#" onclick="openModal('refund')" style="color: #d0ffd6; text-decoration: none;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='#d0ffd6'">Refund Policy</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Copyright Section -->
+  <div style="margin-top: 45px; font-size: 13px; color: #d9f9dc; text-align: center;">
+    © 2025 Brixo Mart | All Rights Reserved
+  </div>
+</footer>
+<!-- ================== END FOOTER ================== -->
+
+<!-- ================== MODALS ================== -->
+<div id="policyModal" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:999;">
+  <div style="background:#fff; color:#333; padding:25px; border-radius:12px; max-width:600px; width:90%; text-align:left; position:relative;">
+    <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; font-weight:bold; color:#2e7d32;">✖</span>
+    <h2 id="modalTitle" style="margin-bottom:10px; color:#2e7d32;"></h2>
+    <p id="modalContent" style="line-height:1.6; font-size:14px;"></p>
+  </div>
+</div>
+
+  </div>
+  <!-- External JavaScript libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Link to external JS file -->
+  <script src="script.js"></script>
+  <!-- ==================  BRIXO MART FOOTER and about us ================== -->
+  <!-- New Cart Bar HTML -->
+  <div class="cart-bar" id="cart-bar" onclick="showCart()">
+    <div class="left">
+      <div class="icon-square" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </div>
+      <div class="info">
+        <div class="items">0 items</div>
+        <div class="price">₹0</div>
+      </div>
+    </div>
+    <div class="view">
+      <div>View Cart</div>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+<!-- ✅  Toast HTML -->
+  <div class="toast" id="toast">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#28a745" viewBox="0 0 24 24">
+      <path d="M20.285 6.709l-11.285 11.291-5.285-5.291 1.414-1.414 3.871 3.877 9.871-9.877z"/>
+    </svg>
+    <span id="toastMessage">Added to Cart</span>
+  </div>
+<div id="free-delivery-bar" class="free-delivery-message" style="display: none; position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); width: calc(100% - 32px); max-width: 960px; background: #fff; color: #000; padding: 10px; text-align: center; font-weight: bold; border-radius: 8px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 998;"></div>
 </body>
 </html>
+
