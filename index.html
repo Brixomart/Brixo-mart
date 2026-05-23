@@ -264,117 +264,145 @@
     <div class="content">
       <!-- Categories Page -->
       <div id="categories-page" class="container">
-        <!-- Daily uses product Section -->
-        <div class="category-section">
-          <h3 class="section-title">Daily uses product</h3>
-          <div class="category-grid">
-            <div class="category-card" onclick="showProducts('Shampoo')">
-              <div class="category-image-container">
-                <img src="/photos/IMG-20250929-WA0011.jpg" class="category-image" alt="Bread">
+        <!-- Order Again Section (visible only when user has previous orders) -->
+        <div class="order-again-section" id="order-again-section" style="display:none;">
+          <div class="section-header-row">
+            <h3 class="section-title-premium">🔄 Order Again</h3>
+            <button class="see-all-btn" onclick="showOrders()">See All →</button>
+          </div>
+          <div class="order-again-scroll" id="order-again-scroll">
+            <!-- Dynamically populated by JS -->
+          </div>
+        </div>
+
+        <!-- Daily Uses Product Section - Premium Redesign -->
+        <div class="category-section-premium">
+          <div class="section-header-row">
+            <h3 class="section-title-premium">Shop by Category</h3>
+            <button class="see-all-btn" onclick="showCategoriesGrid()">See All →</button>
+          </div>
+          <div class="category-grid-premium">
+            <div class="category-card-premium" onclick="showProducts('Shampoo')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2);">
+                <img src="/photos/IMG-20250929-WA0011.jpg" class="category-img-round" alt="Sweet Tooth">
               </div>
-              <p class="category-name">Sweet Tooth</p>
+              <p class="category-label">Sweet Tooth</p>
             </div>
-            <div class="category-card" onclick="showProducts('Soap')">
-              <div class="category-image-container">
-                <img src="photos/IMG-20250929-WA0010.jpg" class="category-image" alt="Electronic">
+            <div class="category-card-premium" onclick="showProducts('Soap')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #E8F5E9, #C8E6C9);">
+                <img src="photos/IMG-20250929-WA0010.jpg" class="category-img-round" alt="Tea, Coffee & Milk">
               </div>
-              <p class="category-name">Tea,Coffe&milk...</p>
+              <p class="category-label">Tea, Coffee & Milk</p>
             </div>
-            <div class="category-card" onclick="showProducts('Toothpaste')">
-              <div class="category-image-container">
-                <img src="/photos/IMG-20250929-WA0009.jpg" class="category-image" alt="Baby">
+            <div class="category-card-premium" onclick="showProducts('Toothpaste')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #FCE4EC, #F8BBD0);">
+                <img src="/photos/IMG-20250929-WA0009.jpg" class="category-img-round" alt="Baby">
               </div>
-              <p class="category-name">baby</p>
+              <p class="category-label">Baby</p>
             </div>
-            <div class="category-card" onclick="showProducts('Toothbrush')">
-              <div class="category-image-container">
-                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.01.45_3f766593.jpg" class="category-image" alt="Toothbrush">
+            <div class="category-card-premium" onclick="showProducts('Toothbrush')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #E3F2FD, #BBDEFB);">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.01.45_3f766593.jpg" class="category-img-round" alt="Toothbrush">
               </div>
-              <p class="category-name">Toothbrush</p>
+              <p class="category-label">Toothbrush</p>
             </div>
-            <div class="category-card" onclick="showProducts('Face Wash')">
-              <div class="category-image-container">
-                <img src="/photos/IMG-20250929-WA0012.jpg" class="category-image" alt="Beauty">
+            <div class="category-card-premium" onclick="showProducts('Face Wash')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #F3E5F5, #E1BEE7);">
+                <img src="/photos/IMG-20250929-WA0012.jpg" class="category-img-round" alt="Beauty">
               </div>
-              <p class="category-name">beauty</p>
+              <p class="category-label">Beauty</p>
             </div>
-            <div class="category-card" onclick="showProducts('Deodorant')">
-              <div class="category-image-container">
-                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.11.07_2c3ac348.jpg" class="category-image" alt="Wheat Atta">
+            <div class="category-card-premium" onclick="showProducts('Deodorant')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #FFF8E1, #FFECB3);">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.11.07_2c3ac348.jpg" class="category-img-round" alt="Wheat & Atta">
               </div>
-              <p class="category-name">wheat,atta</p>
+              <p class="category-label">Wheat & Atta</p>
             </div>
-            <div class="category-card" onclick="showProducts('r')">
-              <div class="category-image-container">
-                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.06.46_3664e139.jpg" class="category-image" alt="Fashion">
+            <div class="category-card-premium" onclick="showProducts('r')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #E0F7FA, #B2EBF2);">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.06.46_3664e139.jpg" class="category-img-round" alt="Fashion">
               </div>
-              <p class="category-name">Fashion</p>
+              <p class="category-label">Fashion</p>
             </div>
-            <div class="category-card" onclick="showProducts('Shaving Cream')">
-              <div class="category-image-container">
-                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.15.49_2eace5e0.jpg" class="category-image" alt="Oil">
+            <div class="category-card-premium" onclick="showProducts('Shaving Cream')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #FFFDE7, #FFF9C4);">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.15.49_2eace5e0.jpg" class="category-img-round" alt="Oil">
               </div>
-              <p class="category-name">Oil</p>
+              <p class="category-label">Oil</p>
             </div>
-            <div class="category-card" onclick="showProducts('Sanitary Pads')">
-              <div class="category-image-container">
-                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.19.57_221584f9.jpg" class="category-image" alt="Kitchen Item">
+            <div class="category-card-premium" onclick="showProducts('Sanitary Pads')">
+              <div class="category-icon-circle" style="background: linear-gradient(135deg, #EFEBE9, #D7CCC8);">
+                <img src="/photos/WhatsApp%20Image%202025-09-29%20at%2017.19.57_221584f9.jpg" class="category-img-round" alt="Kitchen Item">
               </div>
-              <p class="category-name">kitchen item</p>
+              <p class="category-label">Kitchen Item</p>
             </div>
           </div>
         </div>
         <!-- Fresh Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Fresh</h2>
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Fresh</h2>
+          </div>
           <div class="product-grid" id="fresh-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
         <!-- Categories (Groceries) Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Categories</h2>
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Categories</h2>
+          </div>
           <div class="product-grid" id="categories-product-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
-                <!-- beauty Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Beauty</h2>
+        <!-- Beauty Section with 4 products -->
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Beauty</h2>
+          </div>
           <div class="product-grid" id="beauty-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
         <!-- Kids Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Kids</h2>
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Kids</h2>
+          </div>
           <div class="product-grid" id="kids-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
         <!-- Toys Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Toys</h2>
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Toys</h2>
+          </div>
           <div class="product-grid" id="toys-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
         <!-- Electronic Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Electronic</h2>
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Electronic</h2>
+          </div>
           <div class="product-grid" id="electronic-grid">
             <!-- Products will be dynamically populated here -->
           </div>
         </div>
 
-                <!-- Kids Section with 4 products -->
-        <div class="category-section">
-          <h2 class="section-title">Top Deals</h2>
+        <!-- Top Deals Section with 4 products -->
+        <div class="category-section-premium product-listing-section">
+          <div class="section-header-row">
+            <h2 class="section-title-premium">Top Deals</h2>
+          </div>
           <div class="product-grid" id="top-deals-grid">
             <!-- Products will be dynamically populated here -->
           </div>

@@ -1317,9 +1317,57 @@ function showProductDetail(category, productIndex) {
 
         document.getElementById('app-footer').style.display = 'block';
         updateCartCount(); // Update visibility
+        populateOrderAgain(); // Refresh Order Again section
 
         // Push to history
         history.pushState({page: 'categories'}, '', '?page=categories');
+    }
+
+    // Populate Order Again section on home page
+    function populateOrderAgain() {
+      var section = document.getElementById('order-again-section');
+      var scroll = document.getElementById('order-again-scroll');
+      if (!section || !scroll) return;
+
+      if (orders.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      // Collect unique items from all orders (most recent first)
+      var seen = {};
+      var uniqueItems = [];
+      for (var i = orders.length - 1; i >= 0; i--) {
+        var items = orders[i].items;
+        for (var j = 0; j < items.length; j++) {
+          var item = items[j];
+          if (!seen[item.name]) {
+            seen[item.name] = true;
+            uniqueItems.push(item);
+          }
+        }
+      }
+
+      if (uniqueItems.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      scroll.innerHTML = '';
+      uniqueItems.forEach(function(item) {
+        var card = document.createElement('div');
+        card.className = 'order-again-card';
+        var imgSrc = item.image || '';
+        var safeName = (item.name || '').replace(/'/g, "\\'");
+        card.innerHTML =
+          '<img class="order-again-img" src="' + imgSrc + '" alt="' + (item.name || '') + '" onerror="this.src=\'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect fill=%22%23f0f0f0%22 width=%2280%22 height=%2280%22/><text x=%2240%22 y=%2244%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2212%22>' + (item.name ? item.name.charAt(0) : '?') + '</text></svg>\'">' +
+          '<div class="order-again-name">' + (item.name || 'Product') + '</div>' +
+          '<div class="order-again-price">' + (item.price || '') + '</div>' +
+          '<button class="order-again-add-btn" onclick="event.stopPropagation(); addToCart(event, this, \'' + safeName + '\')">+ ADD</button>';
+        scroll.appendChild(card);
+      });
+
+      section.style.display = 'block';
     }
 
     // Function to show categories grid page
